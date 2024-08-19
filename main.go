@@ -26,8 +26,10 @@ var collection *mongo.Collection
 
 func main() {
 
-	if err := godotenv.Load(".env"); err != nil {
-		log.Fatal("No .env file found", err)
+	if os.Getenv("ENV") != "production" {
+		if err := godotenv.Load(".env"); err != nil {
+			log.Fatal("No .env file found", err)
+		}
 	}
 
 	MONGODB_URI := os.Getenv("MONGODB_URI")
@@ -62,6 +64,10 @@ func main() {
 	if PORT == "" {
 		PORT = "4000"
 	}
+
+	// if os.Getenv("ENV") == "production" {
+	// 	app.Static("/", "./client/dist")
+	// }
 
 	log.Fatal(app.Listen("0.0.0.0:" + PORT))
 }
