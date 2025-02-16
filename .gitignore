@@ -1,3 +1,24 @@
 .env
 
 tmp/
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+client/node_modules
+client/dist
+client/dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
